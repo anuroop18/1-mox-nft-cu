@@ -1,0 +1,59 @@
+[project]
+name = "mox_nft"
+version = "0.1.0"
+description = "An NFT using mox"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "moccasin>=0.3.6",
+    "snekmate>=0.1.0",
+]
+
+[tool.moccasin.project]
+src = "contracts"
+out = "out"
+dot_env = ".env"
+dependencies = ["snekmate", "mamushi", "moccasin"]
+
+[tool.moccasin.networks.anvil]
+url = "http://127.0.0.1:8545"
+prompt_live = false
+save_to_db = true
+chain_id = 31337
+default_account_name = "anvil0"
+unsafe_password_file = "~/.moccasin/unsafe-passwords/anvil0"
+
+[tool.moccasin.networks.zksync-anvil]
+url = "http://127.0.0.1:8011"
+is_zksync = true
+prompt_live = false
+save_to_db = true
+chain_id = 260
+default_account_name = "zk-anvil0"
+unsafe_password_file = "~/.moccasin/unsafe-passwords/zk-anvil0"
+
+[tool.moccasin.networks.sepolia]
+url = "$SEPOLIA_RPC_URL"
+save_to_db = false
+default_account_name = "sepolia_default"
+unsafe_password_file = "~/.moccasin/unsafe-passwords/sepolia_default"
+explorer_uri = "https://eth-sepolia.blockscout.com/"
+explorer_type = "blockscout"
+chain_id = 11155111
+
+[tool.moccasin.networks.sepolia_zksync]
+url = "$ZKSYNC_SEPOLIA_RPC_URL"
+chain_id = 300
+save_to_db = false
+default_account_name = "sepolia_default"
+unsafe_password_file = "~/.moccasin/unsafe-passwords/sepolia_default"
+explorer_uri = "https://explorer.sepolia.era.zksync.dev"
+explorer_type = "zksyncexplorer"
+is_zksync = true
+
+[tool.moccasin.networks.tenderly-sepolia]
+url = "$TENDERLY_SEPOLIA_RPC_URL"
+chain_id = 111555111
+save_to_db = false
+default_account_name = "tenderly_account0"
+unsafe_password_file = "~/.moccasin/unsafe-passwords/tenderly_account0"
